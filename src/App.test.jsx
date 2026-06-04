@@ -21,6 +21,19 @@ test("successful login",async ()=>{
     expect(txt).toBeInTheDocument()
 })
 
+test("failed login",async ()=>{
+    render(<App/>)
+    const email = screen.getByPlaceholderText("Email")
+    const password = screen.getByPlaceholderText("Password")
+    const btn = screen.getByText("Submit")
+    await userEvent.type(email,"amy@gmail.com")
+    await userEvent.type(password,"1234")
+    await userEvent.click(btn)
+    const txt = screen.getByText("Access Denied")
+    expect(txt).toBeInTheDocument()
+})
+
+
 
 
 // test("message update", async () => {
