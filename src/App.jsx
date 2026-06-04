@@ -11,10 +11,22 @@
 // setupTests.js inside src folder
 // import '@testing-library/jest-dom’;
 
-import React from 'react'
-
+import React, { useState } from 'react'
 export default function App() {
+  const [message,setMessage] = useState("")
   return (
-    <div>HELLO world</div>
+    <div>
+      <p>{message}</p>
+      <p><button onClick={()=>setMessage("Broadridge")}>Update</button></p>
+    </div>
   )
 }
+
+
+// import React from 'react'
+// export default function App() {
+//   return (
+//     <div>HELLO world</div>
+//   )
+// }
+
