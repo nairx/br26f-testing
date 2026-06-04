@@ -6,3 +6,9 @@ test("render Broadridge",()=>{
     const txt = screen.getByText("Broadridge")
     expect(txt).toBeInTheDocument()
 })
+
+test("render label",()=>{
+    render(<Header/>)
+    const lbl = screen.getByText(/Menu/i)
+    expect(lbl).toBeInTheDocument()
+})
