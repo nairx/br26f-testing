@@ -1,13 +1,27 @@
-// import React from "react";
-// import { render, screen } from "@testing-library/react";
-// import userEvent from "@testing-library/user-event";
-// import App from "./App";
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import App from "./App";
 
-// test("renders hello world",()=>{
-//     render(<App/>)
-//     const txt = screen.getByText(/hello world/i)
-//     expect(txt).toBeInTheDocument()
-// })
+test("renders login form",()=>{
+    render(<App/>)
+    const txt = screen.getByText(/login form/i)
+    expect(txt).toBeInTheDocument()
+})
+
+test("successful login",async ()=>{
+    render(<App/>)
+    const email = screen.getByPlaceholderText("Email")
+    const password = screen.getByPlaceholderText("Password")
+    const btn = screen.getByText("Submit")
+    await userEvent.type(email,"john@gmail.com")
+    await userEvent.type(password,"1234")
+    await userEvent.click(btn)
+    const txt = screen.getByText("Welcome")
+    expect(txt).toBeInTheDocument()
+})
+
+
 
 // test("message update", async () => {
 //   render(<App />);
