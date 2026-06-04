@@ -1,16 +1,16 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "./App";
+import Login from "./Login";
 
 test("renders login form",()=>{
-    render(<App/>)
+    render(<Login/>)
     const txt = screen.getByText(/login form/i)
     expect(txt).toBeInTheDocument()
 })
 
 test("successful login",async ()=>{
-    render(<App/>)
+    render(<Login/>)
     const email = screen.getByPlaceholderText("Email")
     const password = screen.getByPlaceholderText("Password")
     const btn = screen.getByText("Submit")
@@ -22,7 +22,7 @@ test("successful login",async ()=>{
 })
 
 test("failed login",async ()=>{
-    render(<App/>)
+    render(<Login/>)
     const email = screen.getByPlaceholderText("Email")
     const password = screen.getByPlaceholderText("Password")
     const btn = screen.getByText("Submit")
@@ -32,23 +32,3 @@ test("failed login",async ()=>{
     const txt = screen.getByText("Access Denied")
     expect(txt).toBeInTheDocument()
 })
-
-
-
-
-// test("message update", async () => {
-//   render(<App />);
-//   const btn = screen.getByText("Update");
-//   await userEvent.click(btn)
-//   const txt = screen.getByText(/Broadridge/i);
-//   expect(txt).toBeInTheDocument();
-// });
-
-// import React from "react";
-// import { render,screen } from "@testing-library/react";
-// import App from "./App";
-// test("renders text",()=>{
-//     render(<App/>)
-//     const txt = screen.getByText(/hello world/i)
-//     expect(txt).toBeInTheDocument()
-// })
